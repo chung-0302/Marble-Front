@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Marble – Main</title>
+
+<style>
+:root{
+  --bg:#0b0e16;
+  --text:#ffffff;
+  --sub:rgba(255,255,255,.7);
+
+  --card-grad: linear-gradient(
+    180deg,
+    rgba(248, 51, 59, 0.50) 0%,
+    rgba(196, 93, 243, 0.50) 100%
+  );
+}
+
+*{box-sizing:border-box}
+html,body{height:100%; margin:0}
+
+body{
+  font-family:-apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+    "Noto Sans KR", sans-serif;
+  background:
+    radial-gradient(900px 500px at 50% 120%, rgba(196,93,243,.25), transparent 60%),
+    radial-gradient(900px 500px at 50% -20%, rgba(248,51,59,.18), transparent 60%),
+    var(--bg);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--text);
+}
+
+/* Layout */
+.container{
+  width:100%;
+  max-width:1100px;
+  padding:40px 20px 80px;
+  text-align:center;
+}
+
+h1{
+  font-size:36px;
+  margin:0 0 10px;
+}
+h1 span{
+  background:linear-gradient(90deg, #F8333B, #C45DF3);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.subtitle{
+  color:var(--sub);
+  margin-bottom:70px;
+  font-size:16px;
+}
+
+/* Cards */
+.cards{
+  display:flex;
+  justify-content:center;
+  gap:32px;
+  overflow:visible;
+}
+
+.card{
+  position:relative;
+  width:241px;
+  height:250px;
+  border-radius:24px;
+  border:1px solid #ffffff;
+  background:var(--card-grad);
+  text-decoration:none;
+  color:#ffffff;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+
+  transform:translateY(0) scale(1);
+  transition:transform .22s ease, box-shadow .22s ease;
+}
+
+/* Glass overlay */
+.card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:24px;
+  background:linear-gradient(
+    180deg,
+    rgba(255,255,255,.25),
+    rgba(255,255,255,0) 45%
+  );
+  pointer-events:none;
+}
+
+/* Glow */
+.glow{
+  position:absolute;
+  left:12%;
+  right:12%;
+  bottom:-30px;
+  height:70px;
+  background:linear-gradient(
+    180deg,
+    rgba(248, 51, 59, 0.7),
+    rgba(196, 93, 243, 0.7)
+  );
+  filter:blur(28px);
+  opacity:.35;
+  transform:scale(.9);
+  transition:opacity .22s ease, transform .22s ease;
+  z-index:-1;
+}
+
+.card-content{
+  position:relative;
+  z-index:1;
+}
+
+/* Icon */
+.icon{
+  margin:0 auto 18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.icon svg{
+  stroke:white;
+}
+
+/* Text */
+.card h2{
+  margin:0;
+  font-size:21px;
+  font-weight:600;
+  line-height:1.4;
+}
+
+/* Hover */
+.card:hover{
+  transform:translateY(-12px) scale(1.08);
+  box-shadow:0 35px 90px rgba(0,0,0,.6);
+  z-index:5;
+}
+.card:hover .glow{
+  opacity:.7;
+  transform:scale(1);
+}
+
+/* Responsive */
+@media(max-width:900px){
+  .cards{
+    flex-direction:column;
+    align-items:center;
+  }
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+  <h1>안녕하세요! <span class="en">Marble</span> 입니다.</h1>
+  <div class="subtitle">분석할 마케팅 영역을 선택해주세요</div>
+
+  <div class="cards">
+    <!-- Brand Marketing (임시: 나중에 brand_marketing.html로 바꾸면 됨) -->
+    <a class="card" href="#">
+      <div class="glow"></div>
+      <div class="card-content">
+        <div class="icon">
+          <!-- Brand SVG -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+            <path d="M33.5626 6.89601C32.5626 5.89575 31.2063 5.33365 29.7919 5.33334H10.6666C9.2521 5.33334 7.89554 5.89525 6.89535 6.89544C5.89515 7.89563 5.33325 9.25219 5.33325 10.6667V29.792C5.33355 31.2064 5.89566 32.5627 6.89592 33.5627L30.1066 56.7733C31.3186 57.9777 32.9579 58.6537 34.6666 58.6537C36.3753 58.6537 38.0145 57.9777 39.2266 56.7733L56.7733 39.2267C57.9776 38.0146 58.6536 36.3754 58.6536 34.6667C58.6536 32.958 57.9776 31.3187 56.7733 30.1067L33.5626 6.89601Z" stroke-width="5.33333" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M20.0001 21.3334C20.7365 21.3334 21.3334 20.7364 21.3334 20C21.3334 19.2636 20.7365 18.6667 20.0001 18.6667C19.2637 18.6667 18.6667 19.2636 18.6667 20C18.6667 20.7364 19.2637 21.3334 20.0001 21.3334Z" fill="white" stroke-width="5.33333"/>
+          </svg>
+        </div>
+        <h2 class="en">Brand<br/>Marketing</h2>
+      </div>
+    </a>
+
+    <!-- ✅ NPI Marketing (상세 페이지로 이동) -->
+    <a class="card" href="npi_marketing.html">
+      <div class="glow"></div>
+      <div class="card-content">
+        <div class="icon">
+          <!-- NPI SVG -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 70 70" fill="none">
+            <path d="M28.1929 45.9997C27.9072 44.8923 27.33 43.8817 26.5213 43.073C25.7126 42.2643 24.702 41.6871 23.5946 41.4014L3.96314 36.3391C3.62821 36.2441 3.33342 36.0424 3.12352 35.7646C2.91362 35.4868 2.80005 35.1481 2.80005 34.8C2.80005 34.4518 2.91362 34.1132 3.12352 33.8354C3.33342 33.5576 3.62821 33.3559 3.96314 33.2608L23.5946 28.1954C24.7016 27.9099 25.712 27.3332 26.5206 26.5251C27.3293 25.717 27.9067 24.7071 28.1929 23.6003L33.2552 3.96876C33.3493 3.6325 33.5508 3.33626 33.829 3.12524C34.1072 2.91421 34.4468 2.79999 34.7959 2.79999C35.1451 2.79999 35.4847 2.91421 35.7629 3.12524C36.0411 3.33626 36.2426 3.6325 36.3367 3.96876L41.3958 23.6003C41.6814 24.7077 42.2587 25.7183 43.0673 26.527C43.876 27.3357 44.8866 27.9129 45.994 28.1986L65.6255 33.2576C65.9631 33.3507 66.2608 33.552 66.473 33.8307C66.6852 34.1093 66.8 34.4498 66.8 34.8C66.8 35.1502 66.6852 35.4907 66.473 35.7693C66.2608 36.0479 65.9631 36.2492 65.6255 36.3423L45.994 41.4014C44.8866 41.6871 43.876 42.2643 43.0673 43.073C42.2587 43.8817 41.6814 44.8923 41.3958 45.9997L36.3335 65.6312C36.2394 65.9675 36.0379 66.2637 35.7597 66.4747C35.4815 66.6858 35.1419 66.8 34.7927 66.8C34.4436 66.8 34.104 66.6858 33.8258 66.4747C33.5476 66.2637 33.3461 65.9675 33.252 65.6312L28.1929 45.9997Z" stroke-width="5.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M60.3936 6.00073V18.8004" stroke-width="5.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M66.7933 12.4005H53.9937" stroke-width="5.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M9.19507 50.7996V57.1995" stroke-width="5.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12.3949 53.9995H5.99512" stroke-width="5.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h2 class="en">NPI<br/>Marketing</h2>
+      </div>
+    </a>
+
+    <!-- Social Marketing (임시: 나중에 social_marketing.html로 바꾸면 됨) -->
+    <a class="card" href="#">
+      <div class="glow"></div>
+      <div class="card-content">
+        <div class="icon">
+          <!-- Social SVG -->
+          <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" fill="none">
+            <path d="M42.6668 56V50.6667C42.6668 47.8377 41.543 45.1246 39.5426 43.1242C37.5422 41.1238 34.8291 40 32.0002 40H16.0002C13.1712 40 10.4581 41.1238 8.45769 43.1242C6.4573 45.1246 5.3335 47.8377 5.3335 50.6667V56" stroke-width="5.33333" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M24.0002 29.3333C29.8912 29.3333 34.6668 24.5577 34.6668 18.6667C34.6668 12.7756 29.8912 8 24.0002 8C18.1091 8 13.3335 12.7756 13.3335 18.6667C13.3335 24.5577 18.1091 29.3333 24.0002 29.3333Z" stroke-width="5.33333" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M58.6665 56V50.6667C58.6647 48.3033 57.8781 46.0074 56.4301 44.1395C54.9822 42.2716 52.9548 40.9375 50.6665 40.3467" stroke-width="5.33333" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M42.6665 8.34668C44.9609 8.93415 46.9946 10.2685 48.4469 12.1395C49.8991 14.0105 50.6874 16.3116 50.6874 18.68C50.6874 21.0485 49.8991 23.3496 48.4469 25.2205C46.9946 27.0915 44.9609 28.4259 42.6665 29.0133" stroke-width="5.33333" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h2 class="en">Social<br/>Marketing</h2>
+      </div>
+    </a>
+  </div>
+</div>
+</body>
+</html>
